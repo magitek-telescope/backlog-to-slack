@@ -1,0 +1,48 @@
+module.exports = {
+   "created":"2017-08-08T07:38:53Z",
+   "project":{
+      "archived":false,
+      "projectKey":"TESTPROJECT",
+      "name":"TESTPROJECT",
+      "chartEnabled":true,
+      "id":1,
+      "subtaskingEnabled":true
+   },
+   "id":1,
+   "type":2,
+   "content":{
+      "summary":"【全員】Backlogの利用継続についてレビューを行う。",
+      "key_id":1,
+      "changes":[
+         {
+            "field":"status",
+            "old_value":"2",
+            "type":"standard",
+            "new_value":"4"
+         },
+         {
+            "field":"resolution",
+            "old_value":"",
+            "type":"standard",
+            "new_value":"0"
+         }
+      ],
+      "description":"# Description\nBodyBodyBodyBodyBodyBodyBodyBody",
+      "comment":{
+         "id":1,
+         "content":"コメントコメントコメント"
+      },
+      "id":1
+   },
+   "notifications":[
+
+   ],
+   "createdUser":{
+      "nulabAccount":null,
+      "name":"createdUser",
+      "mailAddress":null,
+      "id":1,
+      "roleType":1,
+      "userId":null
+   }
+}

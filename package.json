@@ -1,0 +1,20 @@
+{
+  "name": "backlog-to-slack",
+  "version": "0.0.1-alpha",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=express babel-node index.js --presets env",
+    "test": "yarn test"
+  },
+  "author": "HANATANI Takuma",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4"
+  }
+}

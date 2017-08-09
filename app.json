@@ -1,0 +1,21 @@
+{
+  "name": "Backlog to Slack",
+  "description": "BacklogのWebHookを受け取ってSlackに流すアプリケーションです。",
+  "keywords": ["Node.js", "Backlog", "Slack", "WebHook", "Integration"],
+  "repository": "https://github.com/potato4d/backlog-to-slack",
+  "logo": "https://raw.githubusercontent.com/xxx/xxx/master/logo.png",
+  "env": {
+    "DOMAIN": {
+      "description": "Backlog側のドメイン(例: https://example.backlog.jp/ )",
+      "value": ""
+    },
+    "BOT_NAME": {
+      "description": "Slack上に表示されるBot名",
+      "value": ""
+    },
+    "SLACK_URL": {
+      "description": "Backlogの通知をSlackに流すためのWebHookのURL",
+      "value": ""
+    }
+  }
+}
