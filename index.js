@@ -65,7 +65,7 @@ function getURL (body) {
 }
 
 function createPayload (channel, body) {
-  const text =`[${body.project.projectKey}-${body.content.key_id}] ${ACTION_TYPES[body.type]} ${body.content.summary} by ${body.createdUser.name}
+  const text =`[${body.project.projectKey}${body.content.key_id ? '-' + body.content.key_id : ''}] ${ACTION_TYPES[body.type]} ${body.content.summary || ''} by ${body.createdUser.name}
 ${getURL(body)}
 `
   return {
