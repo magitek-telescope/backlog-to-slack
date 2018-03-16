@@ -32,53 +32,71 @@ function getURL (body) {
   switch (body.type) {
     case 1:
     case 2:
-      url += `view/${body.project.projectKey}-${body.content.key_id}`
-      break;
+    url += `view/${body.project.projectKey}-${body.content.key_id}`
+    break;
 
     case 3:
-      url += `view/${body.project.projectKey}-${body.content.key_id}#comment-${body.content.comment.id}`;
-      break;
+    url += `view/${body.project.projectKey}-${body.content.key_id}#comment-${body.content.comment.id}`;
+    break;
 
     case 5:
     case 6:
-      url += `alias/wiki/${body.content.id}`
-      break;
+    url += `alias/wiki/${body.content.id}`
+    break;
 
     case 11:
-      url += `rev/${body.project.projectKey}/${body.content.rev}`
-      break;
+    url += `rev/${body.project.projectKey}/${body.content.rev}`
+    break;
 
     case 12:
-      url += `git/${body.project.projectKey}/${body.content.repository.name}/${body.content.revision_type}/${body.content.revisions[0].rev}`
-      break;
+    url += `git/${body.project.projectKey}/${body.content.repository.name}/${body.content.revision_type}/${body.content.revisions[0].rev}`
+    break;
 
     case 18:
     case 19:
-      url += `git/${body.project.projectKey}/${body.content.repository.name}/pullRequests/${body.content.number}`
-      break;
+    url += `git/${body.project.projectKey}/${body.content.repository.name}/pullRequests/${body.content.number}`
+    break;
 
     case 20:
-      url += `git/${body.project.projectKey}/${body.content.repository.name}/pullRequests/${body.content.number}#comment-${body.content.comment.id}`
-      break;
+    url += `git/${body.project.projectKey}/${body.content.repository.name}/pullRequests/${body.content.number}#comment-${body.content.comment.id}`
+    break;
   }
   return url;
 }
 
 function createPayload (channel, body) {
   const text =`[${body.project.projectKey}${body.content.key_id ? '-' + body.content.key_id : ''}] ${ACTION_TYPES[body.type]} ${body.content.summary || ''} by ${body.createdUser.name}
-${getURL(body)}
-`
+  ${getURL(body)}
+  `
   return {
     channel: channel,
     username: BOT_NAME,
-    text,
+    text: "BackLogに更新がありました。",
     attachments: [
       {
-        color: LINE_COLOR || '#42ce9f',
-        fields: [
+        "color": LINE_COLOR || '#42ce9f',
+        "pretext": (body.content.summary || ''),
+        "text": "https://gnex.backlog.jp/view/PUSH7DEV-401#comment-25041234",
+        "fields": [
           {
-            value: getComment(body),
+            "title": "ID",
+            "value": `[${body.project.projectKey}${body.content.key_id ? '-' + body.content.key_id : ''}]`,
+            "short": true
+          },
+          {
+            "title": "イベント",
+            "value": ACTION_TYPES[body.type],
+            "short": true
+          },
+          {
+            title: "作成者",
+            value: body.createdUser.name,
             short: false
+          },
+          {
+            "title": "内容",
+            "value": getComment(body),
+            "short": false
           }
         ]
       }
