@@ -76,7 +76,7 @@ function createPayload (channel, body) {
       {
         "color": LINE_COLOR || '#42ce9f',
         "pretext": (body.content.summary || ''),
-        "text": "https://gnex.backlog.jp/view/PUSH7DEV-401#comment-25041234",
+        "text": getURL(body),
         "fields": [
           {
             "title": "ID",
@@ -91,7 +91,12 @@ function createPayload (channel, body) {
           {
             title: "作成者",
             value: body.createdUser.name,
-            short: false
+            short: true
+          },
+          {
+            title: "担当者",
+            value: body.content.assignee.name,
+            short: true
           },
           {
             "title": "内容",
