@@ -95,7 +95,7 @@ function createPayload (channel, body) {
           },
           {
             title: "担当者",
-            value: body.content.assignee.name,
+            value: body.content.assignee ? body.content.assignee.name : '',
             short: true
           },
           {
@@ -121,6 +121,9 @@ app.post('/:channel', (req, res) => {
   )
   .then(({data}) => {
     res.json({result: 'success'});
+  })
+  .catch((err) => {
+    console.log(err)
   })
 })
 
